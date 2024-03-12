@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Stack, Typography, Box, styled, Button } from "@mui/material";
 import { cyan, teal } from "@mui/material/colors";
 import { range } from 'lodash';
-import { getAllFilms } from "../services/FilmService";
+import { addFilm, getAllFilms } from "../services/FilmService";
 import { AddFilmDialog } from "./AddFilmDialog";
 
 function ColoredLineTableCell(props) {
@@ -61,16 +61,23 @@ export function ListOfFilms() {
   const [allFilms, setAllFilms] = useState();
   const [isAdding, setIsAdding] = useState(false);
 
-  useEffect(() => {
-    const fetchAllFilms = async () => {
-      const obtainedFilms = await getAllFilms();
-      setAllFilms(obtainedFilms);
-    }
-    fetchAllFilms();
+  const fetchAllFilms = useCallback(async () => {
+    const obtainedFilms = await getAllFilms();
+    setAllFilms(obtainedFilms);
   }, []);
 
+  useEffect(() => {
+    fetchAllFilms();
+  }, [fetchAllFilms]);
+
   return allFilms && <>
-    <AddFilmDialog open={isAdding} closeAction={() => setIsAdding(false)} />
+    <AddFilmDialog open={isAdding} 
+      closeAction={() => setIsAdding(false)} 
+      confirmAction={async (newFilmData) => {
+        await addFilm(newFilmData);
+        await fetchAllFilms();
+      }}
+    />
     <Stack direction='column'>
       <Stack direction='row' justifyContent='space-between' alignItems='flex-end'>
         <Typography variant='h4'>Películas</Typography>

@@ -1,11 +1,16 @@
 import { createTheme } from "@mui/material";
-import { lightBlue } from "@mui/material/colors";
+import { blue, lightBlue } from "@mui/material/colors";
 
 export const customMuiTheme = createTheme({
   typography: {
     h4: {
       fontWeight: 'bold',
       color: lightBlue[700],
+    },
+    h5: {
+      fontWeight: 'bold',
+      color: blue[800],
+      fontSize: '1.5rem',
     },
     subtitle1: {
       fontSize: '1rem',
