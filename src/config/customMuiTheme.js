@@ -1,5 +1,5 @@
 import { createTheme } from "@mui/material";
-import { blue, lightBlue } from "@mui/material/colors";
+import { blue, blueGrey, lightBlue } from "@mui/material/colors";
 
 export const customMuiTheme = createTheme({
   typography: {
@@ -18,6 +18,16 @@ export const customMuiTheme = createTheme({
     button: {
       textTransform: 'none',
     },
+    topMenu: {
+      color: blueGrey[50],
+      fontSize: '1.5rem',
+      fontWeight: 'bold',
+    },
+    topMenuSelected: {
+      color: blueGrey[200],
+      fontSize: '1.5rem',
+      fontWeight: 'bold',
+    }
   },
   components: {
     MuiTableCell: {

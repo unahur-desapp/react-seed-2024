@@ -1,3 +1,4 @@
+import { sortBy } from "lodash";
 import { getAllFilmsFake } from "./FilmService";
 
 export async function getAllActors() {
@@ -17,7 +18,7 @@ const images = {
 };
 
 async function getAllActorsFake() {
-  const filmsData = await getAllFilmsFake();
+  const filmsData = sortBy(await getAllFilmsFake(), ['year']);
   const actorsData = filmsData.reduce((list, film) => {
     return film.mainActors.reduce((innerList, actorName) => {
       const currentRecord = innerList.find(actor => actor.name === actorName);
