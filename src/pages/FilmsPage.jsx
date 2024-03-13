@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Stack, Typography, Box, styled, Button } from "@mui/material";
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Stack, Typography, Box, styled, Button, Chip } from "@mui/material";
 import { cyan, teal } from "@mui/material/colors";
 import { range } from 'lodash';
 import { addFilm, getAllFilms } from "../services/FilmService";
@@ -11,6 +11,11 @@ function ColoredLineTableCell(props) {
 
 function pairOfActorsRendering(pairOfActors) {
   return pairOfActors.join(' / ');
+}
+
+const COLOR_BY_GENRE = {
+  'Ciencia Ficción': 'warning',
+  'Fantasía': 'info'
 }
 
 function FilmRow({ film, isLast }) {
@@ -30,7 +35,9 @@ function FilmRow({ film, isLast }) {
   return <TableRow>
     <CellClass>{ film.name }</CellClass>
     <CellClass>{ film.year }</CellClass>
-    <CellClass>{ film.genre }</CellClass>
+    <CellClass>
+      <Chip label={ film.genre } color={COLOR_BY_GENRE[film.genre]}></Chip>
+    </CellClass>
     <CellClass>{ film.director }</CellClass>
     <CellClass>{ actorRendering }</CellClass>
   </TableRow>
