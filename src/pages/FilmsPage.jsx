@@ -3,7 +3,7 @@ import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper
 import { cyan, teal } from "@mui/material/colors";
 import { range } from 'lodash';
 import { addFilm, getAllFilms } from "../services/FilmService";
-import { AddFilmDialog } from "./AddFilmDialog";
+import { AddFilmDialog } from "../components/AddFilmDialog";
 
 function ColoredLineTableCell(props) {
   return <TableCell sx={{ borderBottomColor: teal[300], borderBottomWidth: 2, ...(props.sx || {}) }} {...props} />;
@@ -57,7 +57,7 @@ function TableOfFilms({ films }) {
   </TableContainer>;
 }
 
-export function ListOfFilms() {
+export function FilmsPage() {
   const [allFilms, setAllFilms] = useState();
   const [isAdding, setIsAdding] = useState(false);
 

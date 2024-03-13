@@ -24,7 +24,7 @@ export async function getAllFilms() {
   return getAllFilmsFake();
 }
 
-async function getAllFilmsFake() {
+export async function getAllFilmsFake() {
   return Promise.resolve(JSON.parse(sessionStorage.getItem('fakeFilms')));
 }
 

@@ -1,12 +1,11 @@
 import { Box } from "@mui/material";
-import { ListOfFilms } from "./pages/ListOfFilms";
-// import { ListOfFilms } from "./pages/ListOfFilmsReduxStyle";
+import { AppRouter } from "./AppRouter";
 
 export function App() {
 
   return (
     <Box sx={{mx: 4, my: 4}}>
-      <ListOfFilms />
+      <AppRouter />
     </Box>
   )
 }
