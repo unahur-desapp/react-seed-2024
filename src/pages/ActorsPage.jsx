@@ -18,7 +18,7 @@ function ActorCard({ actor }) {
       component="img"
       image={actor.image || unknownPersonImage}
       alt="Jonathan Pryce"
-      sx={{ width: 140, height: 200 }}
+      sx={{ width: { xs: 100, sm: 140 }, height: 200 }}
     />          
   </Card>;
 }

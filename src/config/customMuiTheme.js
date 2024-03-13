@@ -15,6 +15,9 @@ export const customMuiTheme = createTheme({
     subtitle1: {
       fontSize: '1rem',
     },
+    subtitle2: {
+      fontSize: '1.2rem',
+    },
     button: {
       textTransform: 'none',
     },
